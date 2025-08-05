@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -55,17 +55,37 @@ const menuItems = [
 
 const MenuCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoSliding, setIsAutoSliding] = useState(true);
+
+  // Auto-slide functionality
+  useEffect(() => {
+    if (!isAutoSliding) return;
+    
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => 
+        prevIndex === menuItems.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 4000); // Auto-slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [isAutoSliding]);
 
   const nextSlide = () => {
+    setIsAutoSliding(false); // Pause auto-slide when user interacts
     setCurrentIndex((prevIndex) => 
       prevIndex === menuItems.length - 1 ? 0 : prevIndex + 1
     );
+    // Resume auto-slide after 10 seconds
+    setTimeout(() => setIsAutoSliding(true), 10000);
   };
 
   const prevSlide = () => {
+    setIsAutoSliding(false); // Pause auto-slide when user interacts
     setCurrentIndex((prevIndex) => 
       prevIndex === 0 ? menuItems.length - 1 : prevIndex - 1
     );
+    // Resume auto-slide after 10 seconds
+    setTimeout(() => setIsAutoSliding(true), 10000);
   };
 
   const currentItem = menuItems[currentIndex];
@@ -83,79 +103,77 @@ const MenuCarousel = () => {
           </p>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative max-w-5xl mx-auto group">
-          {/* Professional Menu Card */}
-          <div className="bg-background rounded-3xl shadow-2xl overflow-hidden border border-primary/10 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(212,175,55,0.3)] hover:border-primary/30">
-            {/* Card Image */}
-            <div className="relative h-[500px] overflow-hidden">
+        {/* Minimalist Carousel Container */}
+        <div className="relative max-w-6xl mx-auto">
+          {/* High-Quality Image Display */}
+          <div className="relative overflow-hidden rounded-3xl shadow-[0_25px_50px_rgba(0,0,0,0.3)]">
+            <div className="aspect-[16/10] relative">
               <img
                 src={currentItem.image}
                 alt={currentItem.title}
-                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover transition-all duration-1000 ease-in-out"
+                style={{ filter: 'brightness(1.05) contrast(1.1)' }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-all duration-500 group-hover:from-black/50" />
               
-              {/* Elegant Frame Overlay */}
-              <div className="absolute inset-4 border-2 border-primary/30 rounded-2xl opacity-0 transition-all duration-500 group-hover:opacity-100"></div>
+              {/* Subtle Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               
-              {/* Navigation Arrows */}
-              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-4 opacity-90 hover:opacity-100 transition-opacity duration-300">
+              {/* Sleek Navigation Icons */}
+              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-6">
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={prevSlide}
-                  className="bg-black/80 hover:bg-primary hover:text-black text-primary border-2 border-primary/50 h-14 w-14 backdrop-blur-md rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.6)] hover:scale-110"
+                  className="group bg-black/40 hover:bg-black/60 text-primary border border-primary/30 h-16 w-16 rounded-full backdrop-blur-md transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]"
                 >
-                  <ChevronLeft className="h-6 w-6" />
+                  <ChevronLeft className="h-7 w-7 transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.8)]" />
                 </Button>
                 
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={nextSlide}
-                  className="bg-black/80 hover:bg-primary hover:text-black text-primary border-2 border-primary/50 h-14 w-14 backdrop-blur-md rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.6)] hover:scale-110"
+                  className="group bg-black/40 hover:bg-black/60 text-primary border border-primary/30 h-16 w-16 rounded-full backdrop-blur-md transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]"
                 >
-                  <ChevronRight className="h-6 w-6" />
+                  <ChevronRight className="h-7 w-7 transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.8)]" />
                 </Button>
               </div>
-            </div>
-
-            {/* Card Content */}
-            <div className="p-8 space-y-6 bg-gradient-to-b from-background to-background/95">
-              {/* Dish Title */}
-              <div className="text-center border-b border-primary/20 pb-4">
-                <h3 className="text-3xl md:text-4xl font-serif font-bold text-primary mb-3 transition-all duration-300 group-hover:text-primary-glow">
-                  {currentItem.title}
-                </h3>
-                <div className="w-20 h-0.5 bg-primary mx-auto transition-all duration-500 group-hover:w-32 group-hover:shadow-glow"></div>
-              </div>
               
-              {/* Description */}
-              <p className="text-lg text-foreground-muted text-center leading-relaxed max-w-3xl mx-auto transition-all duration-300 group-hover:text-foreground">
-                {currentItem.description}
-              </p>
-              
-              {/* Decorative Elements */}
-              <div className="flex justify-center space-x-2 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <div className="w-2 h-2 bg-primary/60 rounded-full"></div>
-                <div className="w-2 h-2 bg-primary/30 rounded-full"></div>
+              {/* Auto-slide indicator */}
+              <div className="absolute top-6 right-6">
+                <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  isAutoSliding ? 'bg-primary shadow-[0_0_10px_rgba(212,175,55,0.6)] animate-pulse' : 'bg-white/30'
+                }`}></div>
               </div>
             </div>
           </div>
 
-          {/* Enhanced Dots Indicator */}
-          <div className="flex justify-center space-x-4 mt-10">
+          {/* Minimalist Content */}
+          <div className="text-center mt-10 space-y-6">
+            <h3 className="text-4xl md:text-5xl font-serif font-bold text-primary transition-all duration-500">
+              {currentItem.title}
+            </h3>
+            <div className="w-24 h-0.5 bg-primary mx-auto transition-all duration-500"></div>
+            <p className="text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed opacity-90">
+              {currentItem.description}
+            </p>
+          </div>
+
+          {/* Modern Dots Indicator */}
+          <div className="flex justify-center space-x-3 mt-12">
             {menuItems.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`relative transition-all duration-300 ${
+                onClick={() => {
+                  setCurrentIndex(index);
+                  setIsAutoSliding(false);
+                  setTimeout(() => setIsAutoSliding(true), 10000);
+                }}
+                className={`relative transition-all duration-500 ease-out ${
                   index === currentIndex 
-                    ? 'w-8 h-3 bg-primary shadow-[0_0_15px_rgba(212,175,55,0.6)] scale-125' 
-                    : 'w-3 h-3 bg-muted hover:bg-primary/60 hover:scale-110'
-                } rounded-full`}
+                    ? 'w-12 h-3 bg-primary shadow-[0_0_20px_rgba(212,175,55,0.5)]' 
+                    : 'w-3 h-3 bg-white/30 hover:bg-primary/50 hover:scale-125'
+                } rounded-full group`}
               >
                 {index === currentIndex && (
                   <div className="absolute inset-0 bg-primary rounded-full animate-pulse"></div>

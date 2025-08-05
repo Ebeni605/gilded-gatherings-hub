@@ -90,17 +90,17 @@ const MenuCarousel = () => {
             <img
               src={currentItem.image}
               alt={currentItem.title}
-              className="w-full h-[600px] object-cover transition-smooth filter blur-sm"
+              className="w-full h-[600px] object-cover transition-smooth"
             />
             <div className="absolute inset-0 bg-black/20" />
             
             {/* Navigation Arrows at Bottom */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4">
+            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-4">
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={prevSlide}
-                className="bg-background/80 hover:bg-primary hover:text-primary-foreground text-primary border border-primary/20 h-12 w-12 backdrop-blur-sm"
+                className="bg-black/80 hover:bg-primary hover:text-black text-primary border border-primary/30 h-12 w-12 backdrop-blur-sm"
               >
                 <ChevronLeft className="h-6 w-6" />
               </Button>
@@ -109,7 +109,7 @@ const MenuCarousel = () => {
                 variant="ghost"
                 size="icon"
                 onClick={nextSlide}
-                className="bg-background/80 hover:bg-primary hover:text-primary-foreground text-primary border border-primary/20 h-12 w-12 backdrop-blur-sm"
+                className="bg-black/80 hover:bg-primary hover:text-black text-primary border border-primary/30 h-12 w-12 backdrop-blur-sm"
               >
                 <ChevronRight className="h-6 w-6" />
               </Button>

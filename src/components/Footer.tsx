@@ -59,10 +59,17 @@ const Footer = () => {
               Contact & Location
             </h4>
             <div className="space-y-4">
-              <p className="text-foreground-muted">
-                📞 +251 11 123 4567<br />
-                ✉️ info@mafirestaurant.com
-              </p>
+              <div className="text-foreground-muted space-y-2">
+                <div>
+                  📞 <a href="tel:+251945184545" className="hover:text-primary transition-colors">+251 945 184 545</a>
+                </div>
+                <div>
+                  📞 <a href="tel:+25145666555" className="hover:text-primary transition-colors">+251 456 665 55</a>
+                </div>
+                <div>
+                  ✉️ <a href="mailto:mafirestaurant@gmail.com" className="hover:text-primary transition-colors">mafirestaurant@gmail.com</a>
+                </div>
+              </div>
               <Button 
                 onClick={handleMapClick}
                 variant="gold"

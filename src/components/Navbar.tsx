@@ -74,31 +74,31 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden bg-background border-t border-primary/20">
-            <div className="py-4 space-y-4">
+          <div className="md:hidden bg-black/95 backdrop-blur-sm border-t border-primary/30 animate-slide-in-right">
+            <div className="py-6 space-y-2">
               <button
                 onClick={() => scrollToSection('hero')}
-                className="block w-full text-left px-4 py-2 text-primary hover:text-primary-glow transition-colors"
+                className="block w-full text-left px-6 py-4 text-primary hover:text-primary-glow hover:bg-primary/10 transition-all duration-300 border-b border-primary/20"
               >
-                Home
+                <span className="text-lg font-medium">Home</span>
               </button>
               <button
                 onClick={() => scrollToSection('menu')}
-                className="block w-full text-left px-4 py-2 text-primary hover:text-primary-glow transition-colors"
+                className="block w-full text-left px-6 py-4 text-primary hover:text-primary-glow hover:bg-primary/10 transition-all duration-300 border-b border-primary/20"
               >
-                Menu
+                <span className="text-lg font-medium">Menu</span>
               </button>
               <button
                 onClick={() => scrollToSection('meeting-hall')}
-                className="block w-full text-left px-4 py-2 text-primary hover:text-primary-glow transition-colors"
+                className="block w-full text-left px-6 py-4 text-primary hover:text-primary-glow hover:bg-primary/10 transition-all duration-300 border-b border-primary/20"
               >
-                Meeting Hall
+                <span className="text-lg font-medium">Meeting Hall</span>
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="block w-full text-left px-4 py-2 text-primary hover:text-primary-glow transition-colors"
+                className="block w-full text-left px-6 py-4 text-primary hover:text-primary-glow hover:bg-primary/10 transition-all duration-300"
               >
-                Contact
+                <span className="text-lg font-medium">Contact</span>
               </button>
             </div>
           </div>

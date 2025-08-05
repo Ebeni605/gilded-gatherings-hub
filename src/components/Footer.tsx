@@ -1,5 +1,18 @@
-import { MapPin, Instagram } from "lucide-react";
+import { MapPin, Instagram, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+// TikTok Icon Component
+const TikTokIcon = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className="w-5 h-5"
+  >
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+  </svg>
+);
 
 const Footer = () => {
   const handleMapClick = () => {
@@ -11,7 +24,8 @@ const Footer = () => {
     // Placeholder social media links
     const links = {
       instagram: "https://instagram.com/mafirestaurant",
-      tiktok: "https://tiktok.com/@mafirestaurant"
+      tiktok: "https://tiktok.com/@mafirestaurant",
+      facebook: "https://facebook.com/mafirestaurant"
     };
     window.open(links[platform as keyof typeof links], "_blank");
   };
@@ -26,7 +40,7 @@ const Footer = () => {
               <img 
                 src="/lovable-uploads/95062c7d-275a-4648-b44f-bfaaab0b29ca.png" 
                 alt="Mafi Restaurant Logo" 
-                className="h-16 w-16 object-contain"
+                className="h-16 w-16 object-cover rounded-full border-2 border-primary"
               />
             </div>
             <div>
@@ -67,30 +81,29 @@ const Footer = () => {
             </h4>
             <div className="flex justify-center md:justify-start gap-4">
               <Button
+                onClick={() => handleSocialClick("tiktok")}
+                variant="outline"
+                size="icon"
+                className="gold-hover border-primary/20 text-primary hover:text-background hover:bg-primary"
+              >
+                <TikTokIcon />
+              </Button>
+              <Button
                 onClick={() => handleSocialClick("instagram")}
                 variant="outline"
                 size="icon"
-                className="gold-hover border-primary/20"
+                className="gold-hover border-primary/20 text-primary hover:text-background hover:bg-primary"
               >
                 <Instagram className="h-5 w-5" />
               </Button>
               <Button
-                onClick={() => handleSocialClick("tiktok")}
+                onClick={() => handleSocialClick("facebook")}
                 variant="outline"
                 size="icon"
-                className="gold-hover border-primary/20"
+                className="gold-hover border-primary/20 text-primary hover:text-background hover:bg-primary"
               >
-                <div className="h-5 w-5 flex items-center justify-center font-bold text-xs">TT</div>
+                <Facebook className="h-5 w-5" />
               </Button>
-            </div>
-            
-            {/* Developer Credits */}
-            <div className="pt-4 border-t border-primary/20">
-              <p className="text-sm text-foreground-muted">
-                Website developed by<br />
-                <span className="text-primary font-medium">Abenezer Ketema</span> (Frontend)<br />
-                <span className="text-primary font-medium">Robel Assefa</span> (Backend)
-              </p>
             </div>
           </div>
         </div>

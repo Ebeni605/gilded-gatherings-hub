@@ -6,61 +6,61 @@
 @layer base {
   :root {
     /* Primary Brand Colors */
-    --primary: 42 98% 55%; /* Luxurious Gold */
+    --primary: 45 100% 50%; /* Pure Gold */
     --primary-foreground: 0 0% 0%; /* Black text on gold */
-    --primary-glow: 45 100% 70%; /* Brighter gold for highlights */
-    --primary-dark: 35 85% 45%; /* Darker gold variant */
+    --primary-glow: 48 100% 65%; /* Brighter gold for highlights */
+    --primary-dark: 42 100% 45%; /* Darker gold variant */
     
     /* Background Colors */
-    --background: 0 0% 8%; /* Deep black */
-    --background-accent: 0 0% 12%; /* Slightly lighter black */
-    --background-subtle: 0 0% 15%; /* Card backgrounds */
+    --background: 0 0% 0%; /* Pure Black */
+    --background-accent: 0 0% 3%; /* Slightly lighter black */
+    --background-subtle: 0 0% 8%; /* Card backgrounds */
     
     /* Text Colors */
-    --foreground: 42 98% 55%; /* Gold text */
-    --foreground-muted: 0 0% 70%; /* Muted text */
-    --foreground-accent: 0 0% 100%; /* White text */
+    --foreground: 45 100% 50%; /* Gold text */
+    --foreground-muted: 45 100% 70%; /* Muted gold text */
+    --foreground-accent: 45 100% 60%; /* Accent gold text */
     
     /* UI Elements */
-    --card: 0 0% 12%;
-    --card-foreground: 42 98% 55%;
-    --popover: 0 0% 12%;
-    --popover-foreground: 42 98% 55%;
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 42 98% 55%;
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 42 98% 55%;
-    --accent-foreground: 0 0% 0%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 42 98% 55%;
+    --card: 0 0% 5%;
+    --card-foreground: 45 100% 50%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 45 100% 50%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 45 100% 50%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 45 100% 70%;
+    --accent: 0 0% 8%;
+    --accent-foreground: 45 100% 50%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 45 100% 50%;
+    --border: 45 100% 30%;
+    --input: 0 0% 8%;
+    --ring: 45 100% 50%;
     --radius: 0.75rem;
     
     /* Custom Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(42 98% 55%), hsl(45 100% 70%));
-    --gradient-hero: linear-gradient(180deg, hsla(0 0% 0% / 0.7), hsla(42 98% 55% / 0.2));
-    --gradient-subtle: linear-gradient(180deg, hsla(0 0% 8% / 0.95), hsla(0 0% 12% / 0.98));
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 50%), hsl(48 100% 65%));
+    --gradient-hero: linear-gradient(180deg, hsla(0 0% 0% / 0.7), hsla(45 100% 50% / 0.2));
+    --gradient-subtle: linear-gradient(180deg, hsla(0 0% 0% / 0.95), hsla(0 0% 3% / 0.98));
     
     /* Shadows */
-    --shadow-gold: 0 10px 30px -10px hsl(42 98% 55% / 0.3);
-    --shadow-glow: 0 0 40px hsl(45 100% 70% / 0.4);
+    --shadow-gold: 0 10px 30px -10px hsl(45 100% 50% / 0.3);
+    --shadow-glow: 0 0 40px hsl(48 100% 65% / 0.4);
     --shadow-elegant: 0 20px 40px -20px hsl(0 0% 0% / 0.8);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-elegant: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     
-    --sidebar-background: 0 0% 12%;
-    --sidebar-foreground: 42 98% 55%;
-    --sidebar-primary: 42 98% 55%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 45 100% 50%;
+    --sidebar-primary: 45 100% 50%;
     --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent: 0 0% 15%;
-    --sidebar-accent-foreground: 42 98% 55%;
-    --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 42 98% 55%;
+    --sidebar-accent: 0 0% 8%;
+    --sidebar-accent-foreground: 45 100% 50%;
+    --sidebar-border: 45 100% 30%;
+    --sidebar-ring: 45 100% 50%;
   }
 }
 
@@ -119,7 +119,7 @@
   }
   
   .text-shadow-gold {
-    text-shadow: 0 2px 4px hsl(42 98% 55% / 0.3);
+    text-shadow: 0 2px 4px hsl(45 100% 50% / 0.3);
   }
 }
 
@@ -161,9 +161,9 @@
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 20px hsl(42 98% 55% / 0.4);
+    box-shadow: 0 0 20px hsl(45 100% 50% / 0.4);
   }
   to {
-    box-shadow: 0 0 30px hsl(45 100% 70% / 0.6);
+    box-shadow: 0 0 30px hsl(48 100% 65% / 0.6);
   }
 }

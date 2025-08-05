@@ -71,7 +71,7 @@ const MenuCarousel = () => {
   const currentItem = menuItems[currentIndex];
 
   return (
-    <section className="py-20 bg-background">
+    <section id="menu" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
@@ -90,28 +90,30 @@ const MenuCarousel = () => {
             <img
               src={currentItem.image}
               alt={currentItem.title}
-              className="w-full h-[600px] object-cover transition-smooth"
+              className="w-full h-[600px] object-cover transition-smooth filter blur-sm"
             />
-            <div className="absolute inset-0 gradient-subtle" />
+            <div className="absolute inset-0 bg-black/20" />
             
-            {/* Navigation Arrows */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={prevSlide}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-background-subtle/80 hover:bg-primary hover:text-primary-foreground gold-hover text-primary border border-primary/20 h-12 w-12"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </Button>
-            
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={nextSlide}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-background-subtle/80 hover:bg-primary hover:text-primary-foreground gold-hover text-primary border border-primary/20 h-12 w-12"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </Button>
+            {/* Navigation Arrows at Bottom */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={prevSlide}
+                className="bg-background/80 hover:bg-primary hover:text-primary-foreground text-primary border border-primary/20 h-12 w-12 backdrop-blur-sm"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </Button>
+              
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={nextSlide}
+                className="bg-background/80 hover:bg-primary hover:text-primary-foreground text-primary border border-primary/20 h-12 w-12 backdrop-blur-sm"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </Button>
+            </div>
           </div>
 
           {/* Dish Information */}

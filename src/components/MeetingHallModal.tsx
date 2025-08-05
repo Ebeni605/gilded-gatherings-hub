@@ -10,6 +10,7 @@ const MeetingHallModal = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     organization: "",
     date: "",
     time: "",
@@ -27,12 +28,37 @@ const MeetingHallModal = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Create email body with booking details
+    const emailBody = `
+Hello Mafi Restaurant,
+
+I would like to book your meeting hall with the following details:
+
+Name: ${formData.name}
+Email: ${formData.email}
+Organization: ${formData.organization}
+Date: ${formData.date}
+Time: ${formData.time}
+Purpose: ${formData.purpose}
+
+Please confirm the booking and provide further details.
+
+Thank you!
+`;
+
+    // Open email client with pre-filled content
+    const mailtoLink = `mailto:mafirestaurant@gmail.com?subject=Meeting Hall Booking Request&body=${encodeURIComponent(emailBody)}`;
+    window.open(mailtoLink);
+    
     toast({
-      title: "Booking Request Submitted",
-      description: "We'll contact you shortly to confirm your meeting hall reservation.",
+      title: "Booking Request Initiated",
+      description: "Your email client has been opened. Please send the email to complete your booking request.",
     });
+    
     setFormData({
       name: "",
+      email: "",
       organization: "",
       date: "",
       time: "",
@@ -90,6 +116,20 @@ const MeetingHallModal = () => {
                         onChange={handleInputChange}
                         required
                         className="bg-background-subtle border-primary/20 text-foreground-accent focus:border-primary mt-2"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="email" className="text-primary font-medium">Email Address</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="bg-background-subtle border-primary/20 text-foreground-accent focus:border-primary mt-2"
+                        placeholder="your@email.com"
                       />
                     </div>
 

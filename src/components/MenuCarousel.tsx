@@ -84,69 +84,83 @@ const MenuCarousel = () => {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-5xl mx-auto group">
           {/* Professional Menu Card */}
-          <div className="bg-background rounded-3xl shadow-2xl overflow-hidden border border-primary/10">
+          <div className="bg-background rounded-3xl shadow-2xl overflow-hidden border border-primary/10 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(212,175,55,0.3)] hover:border-primary/30">
             {/* Card Image */}
             <div className="relative h-[500px] overflow-hidden">
               <img
                 src={currentItem.image}
                 alt={currentItem.title}
-                className="w-full h-full object-cover transition-smooth hover:scale-105"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-all duration-500 group-hover:from-black/50" />
+              
+              {/* Elegant Frame Overlay */}
+              <div className="absolute inset-4 border-2 border-primary/30 rounded-2xl opacity-0 transition-all duration-500 group-hover:opacity-100"></div>
               
               {/* Navigation Arrows */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
+              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-4 opacity-90 hover:opacity-100 transition-opacity duration-300">
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={prevSlide}
-                  className="bg-black/70 hover:bg-primary hover:text-black text-primary border border-primary/40 h-12 w-12 backdrop-blur-md rounded-full transition-all duration-300 hover:shadow-glow"
+                  className="bg-black/80 hover:bg-primary hover:text-black text-primary border-2 border-primary/50 h-14 w-14 backdrop-blur-md rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.6)] hover:scale-110"
                 >
-                  <ChevronLeft className="h-5 w-5" />
+                  <ChevronLeft className="h-6 w-6" />
                 </Button>
                 
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={nextSlide}
-                  className="bg-black/70 hover:bg-primary hover:text-black text-primary border border-primary/40 h-12 w-12 backdrop-blur-md rounded-full transition-all duration-300 hover:shadow-glow"
+                  className="bg-black/80 hover:bg-primary hover:text-black text-primary border-2 border-primary/50 h-14 w-14 backdrop-blur-md rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.6)] hover:scale-110"
                 >
-                  <ChevronRight className="h-5 w-5" />
+                  <ChevronRight className="h-6 w-6" />
                 </Button>
               </div>
             </div>
 
             {/* Card Content */}
-            <div className="p-8 space-y-6">
+            <div className="p-8 space-y-6 bg-gradient-to-b from-background to-background/95">
               {/* Dish Title */}
               <div className="text-center border-b border-primary/20 pb-4">
-                <h3 className="text-3xl md:text-4xl font-serif font-bold text-primary mb-2">
+                <h3 className="text-3xl md:text-4xl font-serif font-bold text-primary mb-3 transition-all duration-300 group-hover:text-primary-glow">
                   {currentItem.title}
                 </h3>
-                <div className="w-20 h-0.5 bg-primary mx-auto"></div>
+                <div className="w-20 h-0.5 bg-primary mx-auto transition-all duration-500 group-hover:w-32 group-hover:shadow-glow"></div>
               </div>
               
               {/* Description */}
-              <p className="text-lg text-foreground-muted text-center leading-relaxed max-w-3xl mx-auto">
+              <p className="text-lg text-foreground-muted text-center leading-relaxed max-w-3xl mx-auto transition-all duration-300 group-hover:text-foreground">
                 {currentItem.description}
               </p>
+              
+              {/* Decorative Elements */}
+              <div className="flex justify-center space-x-2 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <div className="w-2 h-2 bg-primary/60 rounded-full"></div>
+                <div className="w-2 h-2 bg-primary/30 rounded-full"></div>
+              </div>
             </div>
           </div>
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center space-x-3 mt-8">
+          {/* Enhanced Dots Indicator */}
+          <div className="flex justify-center space-x-4 mt-10">
             {menuItems.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`relative transition-all duration-300 ${
                   index === currentIndex 
-                    ? 'bg-primary shadow-glow scale-125' 
-                    : 'bg-muted hover:bg-primary/50 hover:scale-110'
-                }`}
-              />
+                    ? 'w-8 h-3 bg-primary shadow-[0_0_15px_rgba(212,175,55,0.6)] scale-125' 
+                    : 'w-3 h-3 bg-muted hover:bg-primary/60 hover:scale-110'
+                } rounded-full`}
+              >
+                {index === currentIndex && (
+                  <div className="absolute inset-0 bg-primary rounded-full animate-pulse"></div>
+                )}
+              </button>
             ))}
           </div>
         </div>

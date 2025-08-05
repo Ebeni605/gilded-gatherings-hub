@@ -84,46 +84,55 @@ const MenuCarousel = () => {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Main Image */}
-          <div className="relative overflow-hidden rounded-2xl shadow-elegant mb-8">
-            <img
-              src={currentItem.image}
-              alt={currentItem.title}
-              className="w-full h-[600px] object-cover transition-smooth"
-            />
-            <div className="absolute inset-0 bg-black/20" />
-            
-            {/* Navigation Arrows at Bottom */}
-            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-4">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={prevSlide}
-                className="bg-black/80 hover:bg-primary hover:text-black text-primary border border-primary/30 h-12 w-12 backdrop-blur-sm"
-              >
-                <ChevronLeft className="h-6 w-6" />
-              </Button>
+        <div className="relative max-w-5xl mx-auto">
+          {/* Professional Menu Card */}
+          <div className="bg-background rounded-3xl shadow-2xl overflow-hidden border border-primary/10">
+            {/* Card Image */}
+            <div className="relative h-[500px] overflow-hidden">
+              <img
+                src={currentItem.image}
+                alt={currentItem.title}
+                className="w-full h-full object-cover transition-smooth hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={nextSlide}
-                className="bg-black/80 hover:bg-primary hover:text-black text-primary border border-primary/30 h-12 w-12 backdrop-blur-sm"
-              >
-                <ChevronRight className="h-6 w-6" />
-              </Button>
+              {/* Navigation Arrows */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={prevSlide}
+                  className="bg-black/70 hover:bg-primary hover:text-black text-primary border border-primary/40 h-12 w-12 backdrop-blur-md rounded-full transition-all duration-300 hover:shadow-glow"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </Button>
+                
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={nextSlide}
+                  className="bg-black/70 hover:bg-primary hover:text-black text-primary border border-primary/40 h-12 w-12 backdrop-blur-md rounded-full transition-all duration-300 hover:shadow-glow"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </Button>
+              </div>
             </div>
-          </div>
 
-          {/* Dish Information */}
-          <div className="text-center animate-fade-in">
-            <h3 className="text-3xl md:text-4xl font-serif font-semibold text-primary mb-4">
-              {currentItem.title}
-            </h3>
-            <p className="text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed">
-              {currentItem.description}
-            </p>
+            {/* Card Content */}
+            <div className="p-8 space-y-6">
+              {/* Dish Title */}
+              <div className="text-center border-b border-primary/20 pb-4">
+                <h3 className="text-3xl md:text-4xl font-serif font-bold text-primary mb-2">
+                  {currentItem.title}
+                </h3>
+                <div className="w-20 h-0.5 bg-primary mx-auto"></div>
+              </div>
+              
+              {/* Description */}
+              <p className="text-lg text-foreground-muted text-center leading-relaxed max-w-3xl mx-auto">
+                {currentItem.description}
+              </p>
+            </div>
           </div>
 
           {/* Dots Indicator */}
@@ -132,10 +141,10 @@ const MenuCarousel = () => {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-smooth ${
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex 
-                    ? 'bg-primary shadow-glow' 
-                    : 'bg-muted hover:bg-primary/50'
+                    ? 'bg-primary shadow-glow scale-125' 
+                    : 'bg-muted hover:bg-primary/50 hover:scale-110'
                 }`}
               />
             ))}

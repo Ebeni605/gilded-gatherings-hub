@@ -107,7 +107,7 @@ const MenuCarousel = () => {
         <div className="relative max-w-6xl mx-auto">
           {/* High-Quality Image Display */}
           <div className="relative overflow-hidden rounded-3xl shadow-[0_25px_50px_rgba(0,0,0,0.3)]">
-            <div className="aspect-[16/10] relative">
+            <div className="aspect-[16/11] relative h-[700px]">
               <img
                 src={currentItem.image}
                 alt={currentItem.title}
